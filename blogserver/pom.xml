@@ -6,7 +6,7 @@
 	<groupId>org.sang</groupId>
 	<artifactId>blogserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>blogserver</name>
 	<description>Vue博客服务端</description>
@@ -37,6 +37,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- 移除嵌入式tomcat插件 -->
+			<!--<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>-->
 		</dependency>
 		<dependency>
 			<groupId>commons-codec</groupId>
@@ -62,9 +69,17 @@
 			<artifactId>aopalliance</artifactId>
 			<version>1.0</version>
 		</dependency>
+        <!--添加Servlet API依赖-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
+		<finalName>blog</finalName>
 		<resources>
             <resource>
                 <directory>src/main/java</directory>
